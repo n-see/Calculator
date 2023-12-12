@@ -13,6 +13,8 @@ let minusBtn = document.getElementById("minusBtn");
 let divideBtn = document.getElementById("divideBtn");
 let multiplyBtn = document.getElementById("multiplyBtn");
 let equalBtn = document.getElementById("equalBtn");
+let clearBtn = document.getElementById('clearBtn');
+
 
 let inputField = document.getElementById("inputField");
 
@@ -20,6 +22,8 @@ let results = document.getElementById("results");
 
 let factA = "";
 let factB = "";
+let inputFactA;
+let inputFactB;
 let answer;
 let counter = 0;
 let plusPress = false;
@@ -27,21 +31,50 @@ let minusPress = false;
 let multiplyPress = false;
 let dividePress = false;
 
+
+clearBtn.addEventListener("click", function(event){
+    factA = "";
+    factB = "";
+    counter = 0;
+    plusPress = false;
+    minusPress = false;
+    multiplyPress = false;
+    dividePress = false;
+    Run(factA, factB);
+});
+
 plusBtn.addEventListener("click", function(event){
     counter++;
     plusPress = true;
+    minusPress = false;
+    multiplyPress = false;
+    dividePress = false;
+    // if(a==""){
+    //     inputRun(inputFactA, inputFactB)
+    // }
+
 });
 minusBtn.addEventListener("click", function(event){
     counter++;
     minusPress = true;
+    multiplyPress = false;
+    dividePress = false;
+    addPress = false;
+
 });
 multiplyBtn.addEventListener("click", function(event){
     counter++;
     multiplyPress = true;
+    minusPress = false;
+    plusPress = false;
+    dividePress = false;
 });
 divideBtn.addEventListener("click", function(event){
     counter++;
     dividePress = true;
+    multiplyPress = false;
+    minusPress = false;
+    plusPress = false;
 });
 equalBtn.addEventListener("click", function(event){
     counter++;
@@ -130,7 +163,6 @@ zeroBtn.addEventListener("click", function(event){
 });
 
 
-
 function Run(a, b){
     if(counter == 0){
         results.innerText = a;
@@ -140,23 +172,35 @@ function Run(a, b){
     else{
         results.innerText = b;
     }
-
-}
+};
+// function Run(ia, ib){
+//     if(counter == 0){
+//         results.innerText = a;
+//     }else if(counter == 2){
+//         counter == 0;
+//     }
+//     else{
+//         results.innerText = b;
+//     }
+// };
 function calculate(a, b){
 
     if(plusPress == true){
         answer = Number(a) + Number(b);
-    }
-    if(minusPress == true){
+    }else if(minusPress == true){
         answer = Number(a) - Number(b);
-    }
-    if(multiplyPress == true){
+    }else if(multiplyPress == true){
         answer = Number(a) * Number(b);
-    }
-    if(dividePress == true){
+    }else if(dividePress == true){
         answer = Number(a) / Number(b);
+    }else{
+        answer = "No operator inputted"
+    }
+    // if(a == 0 && b == 0 && Number(a) / Number(b)){
+    //     answer = "Cannot divide 0 and 0"
+    // }
+    if(a == 0 && b ==0 && dividePress == true){
+        answer = "Cannot compute";
     }
     results.innerText = answer;
 };
-Run(factA, factB);
-console.log(counter);
