@@ -1,0 +1,26 @@
+body{
+    background-color: bisque;
+}
+.calculator{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.results2{
+    border: 2px black solid;
+    padding: 10px;
+    height: 75px;
+}
+.card{
+    height: 500px;
+    width: 500px;
+}
+
+.equalBtn{
+    background-color: rgb(40, 85, 235);
+}
+button{
+    width: 100px;
+    margin: 5px;
+}
